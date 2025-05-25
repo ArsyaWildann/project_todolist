@@ -17,8 +17,11 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final todoProvider = Provider.of<ToDoListProvider>(context);
-    final todos =
-        todoProvider.todos; // langsung ambil semua, tanpa filter search
+    final todos = todoProvider.todos;
+    final currentUser = todoProvider.currentUser ?? 'User';
+
+    final displayName =
+        currentUser.split('@')[0]; // Ambil nama sebelum @ sebagai display name
 
     final todosToDo = todos.where((todo) => todo.status == 'To Do').toList();
     final todosInProgress =
@@ -122,11 +125,35 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
+        automaticallyImplyLeading: false, // Hapus tombol back otomatis
         backgroundColor: Colors.orange,
-        title: const Text(
-          'To-Do List',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: Row(
+          children: [
+            const Icon(Icons.account_circle_outlined,
+                size: 28, color: Colors.white70),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                'Halo, $displayName',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ],
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person_outline, color: Colors.white),
+            tooltip: 'Profile',
+            onPressed: () {
+              Navigator.pushNamed(context, '/profile');
+            },
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(

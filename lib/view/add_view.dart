@@ -33,7 +33,6 @@ class _AddViewState extends State<AddView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Back button
               IconButton(
                 icon: Icon(Icons.arrow_back, color: Colors.orange[800]),
                 onPressed: () => Navigator.pop(context),
@@ -64,7 +63,6 @@ class _AddViewState extends State<AddView> {
                 ),
               ),
               const SizedBox(height: 20),
-              // Status Dropdown
               DropdownButtonFormField<String>(
                 value: _selectedStatus,
                 decoration: InputDecoration(

@@ -11,11 +11,15 @@ class TodoModel extends HiveObject {
   DateTime? dueDate;
 
   @HiveField(2)
-  String status; // Pastikan ini selalu 'To Do', 'In Progress', atau 'Done'
+  String status;
+
+  @HiveField(3)
+  String userEmail;
 
   TodoModel({
     required this.title,
     this.dueDate,
     this.status = 'To Do',
+    required this.userEmail,
   });
 }

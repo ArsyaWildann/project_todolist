@@ -20,28 +20,23 @@ class TodoModelAdapter extends TypeAdapter<TodoModel> {
       title: fields[0] as String,
       dueDate: fields[1] as DateTime?,
       status: fields[2] as String,
+      userEmail: fields[3] as String, // ini penting
     );
   }
 
   @override
   void write(BinaryWriter writer, TodoModel obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4) // sekarang ada 4 fields
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
       ..write(obj.dueDate)
       ..writeByte(2)
-      ..write(obj.status);
+      ..write(obj.status)
+      ..writeByte(3)
+      ..write(obj.userEmail); // tulis userEmail juga
   }
 
-  @override
-  int get hashCode => typeId.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is TodoModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+  // hashCode dan == tetap sama
 }

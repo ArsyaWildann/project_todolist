@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../model/todo_model.dart';
-import 'package:todolist/provider/to_do_list_provider.dart';
+import '../provider/to_do_list_provider.dart';
 
 class EditView extends StatefulWidget {
   const EditView({super.key});
@@ -27,6 +27,7 @@ class _EditViewState extends State<EditView> {
 
     _taskController.text = todo.title;
     _selectedDate = todo.dueDate;
+    _isDone = todo.status == 'Done';
   }
 
   @override
