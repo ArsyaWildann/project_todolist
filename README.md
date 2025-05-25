@@ -1,4 +1,4 @@
-![WhatsApp Image 2025-05-25 at 21 56 07_be642aac](https://github.com/user-attachments/assets/83744f3f-89ad-4d93-b9a5-b5356d8ec785)Todolist APK Kelompok 2
+Todolist APK Kelompok 2
 
 Anggota Kelompok:
 **1.Arsya Wildan Daneswara
